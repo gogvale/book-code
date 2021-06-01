@@ -20,9 +20,9 @@ module RSpec
         @output.puts
       end
     end
+
     module SilenceDumpFailures
-      def dump_failures(_notification)
-      end
+      def dump_failures(_notification); end
 
       RSpec::Core::Formatters::BaseTextFormatter.prepend(self)
     end

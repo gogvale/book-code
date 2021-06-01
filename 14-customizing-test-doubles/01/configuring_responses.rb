@@ -35,9 +35,9 @@ expect(some_existing_object).to receive(:a_message)
 extractor = double('TwitterURLExtractor')
 
 allow(extractor).to receive(:extract_urls_from_twitter_firehose)
-  .and_yield('https://rspec.info/',   93284234987)
-  .and_yield('https://github.com/',   43984523459)
-  .and_yield('https://pragprog.com/', 33745639845)
+  .and_yield('https://rspec.info/',   93_284_234_987)
+  .and_yield('https://github.com/',   43_984_523_459)
+  .and_yield('https://pragprog.com/', 33_745_639_845)
 
 dbl = double
 AnExceptionClass = Class.new(StandardError)
@@ -71,7 +71,7 @@ end
 expect(CustomerService.all).to eq(1.upto(10).map { |i| Customer.new(i) })
 
 allow(PasswordHash).to receive(:hash_password)
-  .and_wrap_original do |original, cost_factor|
+  .and_wrap_original do |original, _cost_factor|
     original.call(1)
   end
 
@@ -80,7 +80,7 @@ weather_api = double('WeatherAPI')
 
 counter = 0
 
-allow(weather_api).to receive(:temperature) do |zip_code|
+allow(weather_api).to receive(:temperature) do |_zip_code|
   counter = (counter + 1) % 4
   counter.zero? ? raise(Timeout::Error) : 35.0
 end

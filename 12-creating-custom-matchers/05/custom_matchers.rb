@@ -35,12 +35,10 @@ RSpec::Matchers.define_negated_matcher :end_with_something_besides,
 
 # Strict: requires both conditions to be satisfied
 expect('blazingly').to(
-  start_with_something_besides('a').and \
-    end_with_something_besides('z')
+  start_with_something_besides('a').and(end_with_something_besides('z'))
 )
 
 # Permissive: requires at least one condition to be satisfied
 expect('absolutely').to(
-  start_with_something_besides('a').or \
-    end_with_something_besides('z')
+  start_with_something_besides('a').or(end_with_something_besides('z'))
 )

@@ -33,6 +33,5 @@ module ExpenseTracker
       expect(last_response.status).to eq(200)
       expect(parsed_last_response).to include('expense_id' => 417)
     end
-
   end
 end

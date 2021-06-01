@@ -12,7 +12,7 @@ class RubyDocServer
     respond_with(methods)
   end
 
-private
+  private
 
   def respond_with(data)
     @output.puts 'Content-Type: application/json'
@@ -21,6 +21,4 @@ private
   end
 end
 
-if __FILE__.end_with?($PROGRAM_NAME)
-  RubyDocServer.new.process_request(ENV['PATH_INFO'])
-end
+RubyDocServer.new.process_request(ENV['PATH_INFO']) if __FILE__.end_with?($PROGRAM_NAME)

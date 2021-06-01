@@ -15,7 +15,6 @@ module ExpenseTracker
     config.include APIHelpers
   end
 
-
   RSpec.describe 'Expense Tracker API', :db do
     include APIHelpers
 
@@ -30,21 +29,21 @@ module ExpenseTracker
 
     it 'records submitted expenses' do
       coffee = post_expense(
-        'payee'  => 'Starbucks',
+        'payee' => 'Starbucks',
         'amount' => 5.75,
-        'date'   => '2017-06-10'
+        'date' => '2017-06-10'
       )
 
       zoo = post_expense(
-        'payee'  => 'Zoo',
+        'payee' => 'Zoo',
         'amount' => 15.25,
-        'date'   => '2017-06-10'
+        'date' => '2017-06-10'
       )
 
       groceries = post_expense(
-        'payee'  => 'Whole Foods',
+        'payee' => 'Whole Foods',
         'amount' => 95.20,
-        'date'   => '2017-06-11'
+        'date' => '2017-06-11'
       )
 
       get '/expenses/2017-06-10'

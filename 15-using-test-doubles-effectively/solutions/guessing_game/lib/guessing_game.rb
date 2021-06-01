@@ -1,6 +1,8 @@
 class GuessingGame
   def initialize(input: $stdin, output: $stdout, random: Random.new)
-    @input, @output, @random = input, output, random
+    @input = input
+    @output = output
+    @random = random
     @number = random.rand(1..100)
     @guess = nil
   end
@@ -8,6 +10,7 @@ class GuessingGame
   def play
     5.downto(1) do |remaining_guesses|
       break if @guess == @number
+
       @output.puts "Pick a number 1-100 (#{remaining_guesses} guesses left):"
       @guess = @input.gets.to_i
       check_guess
@@ -16,7 +19,7 @@ class GuessingGame
     announce_result
   end
 
-private
+  private
 
   def check_guess
     if @guess > @number

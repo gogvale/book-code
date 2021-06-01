@@ -6,9 +6,9 @@ class DataGenerator
   end
 
   def email_address_value
-    domain = %w[ gmail.com yahoo.com aol.com hotmail.com ].sample
+    domain = %w[gmail.com yahoo.com aol.com hotmail.com].sample
     username_characters = (0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a
-    username_length = rand(5) + 3
+    username_length = rand(3..7)
     username = Array.new(username_length) { username_characters.sample }.join
 
     "#{username}@#{domain}"
@@ -18,7 +18,7 @@ class DataGenerator
     Date.new(
       (1950..1999).to_a.sample,
       (1..12).to_a.sample,
-      (1..28).to_a.sample,
+      (1..28).to_a.sample
     )
   end
 
@@ -26,7 +26,7 @@ class DataGenerator
     {
       email_address: email_address_value,
       date_of_birth: date_value,
-      active:        boolean_value
+      active: boolean_value
     }
   end
 
@@ -49,7 +49,7 @@ RSpec.describe DataGenerator do
     be_a(Boolean)
   end
 
-  it "generates boolean values" do
+  it 'generates boolean values' do
     value = DataGenerator.new.boolean_value
     expect(value).to be_a_boolean
   end
@@ -60,7 +60,7 @@ RSpec.describe DataGenerator do
     fill_me_in
   end
 
-  it "generates dates before January 1st, 2000" do
+  it 'generates dates before January 1st, 2000' do
     value = DataGenerator.new.date_value
     expect(value).to be_a_date_before_2000
   end
@@ -71,7 +71,7 @@ RSpec.describe DataGenerator do
     match(/some regex/)
   end
 
-  it "generates email addresses" do
+  it 'generates email addresses' do
     value = DataGenerator.new.email_address_value
     expect(value).to be_an_email_address
   end
@@ -79,10 +79,10 @@ RSpec.describe DataGenerator do
   def match_the_shape_of_a_user_record
     # Use `be_a_boolean`, `be_a_date_before_2000` and `be_an_email_address`
     # in the hash passed to `match` below to define this matcher.
-    match(fill_this_in: "with a hash describing the shape of the data")
+    match(fill_this_in: 'with a hash describing the shape of the data')
   end
 
-  it "generates user records" do
+  it 'generates user records' do
     user = DataGenerator.new.user_record
     expect(user).to match_the_shape_of_a_user_record
   end
@@ -92,7 +92,7 @@ RSpec.describe DataGenerator do
     fill_me_in
   end
 
-  it "generates a list of user records" do
+  it 'generates a list of user records' do
     users = DataGenerator.new.users(4)
     expect(users).to all_match_the_shape_of_a_user_record
   end

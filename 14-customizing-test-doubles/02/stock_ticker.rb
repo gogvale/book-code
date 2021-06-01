@@ -11,6 +11,7 @@ class StockTicker
 
   def price(stock_name)
     return nil if @error_count >= 3
+
     nasdaq_client.current_price(stock_name)
   rescue Timeout::Error
     @error_count += 1

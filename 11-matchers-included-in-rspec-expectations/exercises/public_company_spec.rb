@@ -25,5 +25,4 @@ RSpec.describe PublicCompany do
     expect(company.share_count).to eq(10_000)
     expect(company.market_cap).to eq(1_000_000)
   end
-
 end

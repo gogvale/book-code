@@ -18,7 +18,7 @@ Account = Struct.new(:name) do
   end
   alias_method :inspect, :to_s
 
-private
+  private
 
   def calculate_balance(expenses)
     expenses.map(&:amount).inject(0, :+)

@@ -33,7 +33,7 @@ class HaveABalanceOf
     "expected #{@account.inspect} not to #{description}" + failure_reason
   end
 
-private
+  private
 
   def failure_reason
     ", but had a balance of #{account_balance}"

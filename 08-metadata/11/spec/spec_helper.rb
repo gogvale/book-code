@@ -1,7 +1,7 @@
 if ENV['SIMULATE_JRUBY']
   original_ruby_platform = RUBY_PLATFORM
   Object.send(:remove_const, :RUBY_PLATFORM)
-  RUBY_PLATFORM = 'java'
+  RUBY_PLATFORM = 'java'.freeze
 end
 
 RSpec.configure do |config|
@@ -13,12 +13,12 @@ if ENV['SIMULATE_JRUBY']
   RUBY_PLATFORM = original_ruby_platform
 end
 
-RSpec.describe "All rubies" do
-  it "always runs" do
+RSpec.describe 'All rubies' do
+  it 'always runs' do
   end
 end
 
-RSpec.describe "Only on JRuby", :jruby_only do
-  it "always runs" do
+RSpec.describe 'Only on JRuby', :jruby_only do
+  it 'always runs' do
   end
 end

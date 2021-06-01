@@ -1,8 +1,7 @@
 class MyFormatter
   RSpec::Core::Formatters.register self
 
-  def initialize(_)
-  end
+  def initialize(_); end
 end
 
 RSpec.configure do |config|

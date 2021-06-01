@@ -6,6 +6,6 @@ class TwitterUserFormatter
   end
 
   def format
-    @user.name + "'s website is " + @user.url
+    "#{@user.name}'s website is #{@user.url}"
   end
 end

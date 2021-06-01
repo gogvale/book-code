@@ -19,7 +19,6 @@ RSpec.describe MyApp::Configuration do
   it 'isolates mutations from other examples' do
     expect(ENV['FOO']).to eq nil
   end
-
 end
 
 class WebBrowser
@@ -39,5 +38,4 @@ RSpec.describe 'Web interface to my thermostat' do
 
   it 'passes' do
   end
-
 end

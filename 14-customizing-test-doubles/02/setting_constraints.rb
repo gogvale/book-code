@@ -20,8 +20,8 @@ cart = double
 expect(cart).to receive(:add_product).with('Hoodie', any_args)
 
 cart.add_product('Hoodie')
-cart.add_product('Hoodie', 27182818)
-cart.add_product('Hoodie', 27182818, 'HOODIE-SERIAL-123')
+cart.add_product('Hoodie', 27_182_818)
+cart.add_product('Hoodie', 27_182_818, 'HOODIE-SERIAL-123')
 
 database = double
 
@@ -33,14 +33,13 @@ class BoxOffice
   end
 end
 
-
 def use_box_office(box_office)
   expect(box_office).to receive(:find_showtime)
     .with(hash_including(movie: 'Jaws'))
 
-box_office.find_showtime(movie: 'Jaws')
-box_office.find_showtime(movie: 'Jaws', zip_code: 97204)
-box_office.find_showtime(movie: 'Jaws', city: 'Portland', state: 'OR')
+  box_office.find_showtime(movie: 'Jaws')
+  box_office.find_showtime(movie: 'Jaws', zip_code: 97_204)
+  box_office.find_showtime(movie: 'Jaws', city: 'Portland', state: 'OR')
 end
 
 use_box_office(instance_double(BoxOffice))
@@ -64,9 +63,9 @@ expect(box_office).to receive(:find_showtime).with(a_city_in_oregon)
 
 box_office.find_showtime(movie: 'Jaws', city: 'Portland', state: 'OR')
 
-expect {
+expect do
   box_office.find_showtime(movie: 'Jaws', city: 'Portland', state: 'ME')
-}.to raise_error(a_string_matching 'expected: (a city in oregon)')
+end.to raise_error(a_string_matching('expected: (a city in oregon)'))
 
 greeter = double
 
@@ -79,11 +78,11 @@ greeter.hello
 
 greeter = double
 
-expect {
+expect do
   expect(greeter).to receive(:hello).ordered
   expect(greeter).to receive(:goodbye).ordered
 
   # The following will fail:
   greeter.goodbye
   greeter.hello
-}.to raise_error(a_string_matching('out of order'))
+end.to raise_error(a_string_matching('out of order'))

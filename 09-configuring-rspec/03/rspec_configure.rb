@@ -9,10 +9,15 @@ RSpec.configuration.output_stream = $spec_out
 RSpec.configuration.error_stream  = $spec_err
 
 class AveragePerson; end
+
 module Singing; end
+
 module Dancing; end
+
 module ExtraExampleMethods; end
+
 module ImportantExampleMethods; end
+
 module ExtraGroupMethods; end
 
 RSpec.configure do |config|

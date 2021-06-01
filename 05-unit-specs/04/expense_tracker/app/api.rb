@@ -16,7 +16,6 @@ module ExpenseTracker
       JSON.generate('expense_id' => result.expense_id)
     end
 
-
     get '/expenses/:date' do
       JSON.generate([])
     end

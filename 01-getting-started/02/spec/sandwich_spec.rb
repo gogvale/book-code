@@ -1,4 +1,3 @@
-
 RSpec.describe 'An ideal sandwich' do
   it 'is delicious' do
     sandwich = Sandwich.new('delicious', [])

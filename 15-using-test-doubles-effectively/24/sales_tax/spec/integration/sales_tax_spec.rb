@@ -9,8 +9,8 @@ RSpec.describe SalesTax do
   end
 
   it 'raises an error if the tax rate cannot be found' do
-    expect {
+    expect do
       sales_tax.rate_for('00000')
-    }.to raise_error(SalesTax::RateUnavailableError)
+    end.to raise_error(SalesTax::RateUnavailableError)
   end
 end

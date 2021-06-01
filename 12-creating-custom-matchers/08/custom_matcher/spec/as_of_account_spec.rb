@@ -21,7 +21,7 @@ RSpec.describe '`have_a_balance_of(amount)`' do
 
   it 'can be used in a compound expression' do
     expect(account).to have_a_balance_of(30).and \
-                       have_attributes(name: 'Checking')
+      have_attributes(name: 'Checking')
   end
 
   it 'can be passed to another matcher' do

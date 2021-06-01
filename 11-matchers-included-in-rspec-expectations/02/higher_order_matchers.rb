@@ -34,10 +34,10 @@ class Host
 
   expecteds = nil
 
-  expect {
+  expect do
     expecteds = [3, 2]
     expect([1, 2, 3]).to include(expecteds)
-  }.to fail(a_string_including heredoc_without_markers(<<-EOM))
+  end.to fail(a_string_including(heredoc_without_markers(<<-EOM)))
   expected [1, 2, 3] to include [3, 2]
   EOM
 
@@ -49,7 +49,7 @@ class Host
   expect([1, 2, 3]).to start_with(1, 2)
   expect([1, 2, 3]).to end_with(2, 3)
 
-  expect(['list', 'of', 'words']).to start_with(
+  expect(%w[list of words]).to start_with(
     a_string_ending_with('st')
   ).and end_with(
     a_string_starting_with('wo')
@@ -64,11 +64,11 @@ class Host
 
   expect(evens_up_to).to all be_even
 
-  expect {
+  expect do
     RSpec::Matchers.define_negated_matcher :be_non_empty, :be_empty
 
     expect(evens_up_to).to be_non_empty.and all be_even
-  }.to fail(a_string_including heredoc_without_markers(<<-EOM))
+  end.to fail(a_string_including(heredoc_without_markers(<<-EOM)))
   expected `[].empty?` to return false, got true
   EOM
 

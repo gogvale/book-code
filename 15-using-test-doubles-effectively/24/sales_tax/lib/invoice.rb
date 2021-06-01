@@ -14,7 +14,7 @@ class Invoice
     subtotal + taxes
   end
 
-private
+  private
 
   def tax_rate
     @sales_tax.rate_for(@address.zip)

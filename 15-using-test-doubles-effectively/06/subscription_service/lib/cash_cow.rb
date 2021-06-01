@@ -1,5 +1,5 @@
 class CashCow
-  def self.charge_card(card, amount)
+  def self.charge_card(card, _amount)
     # ...
     puts "charged card: #{card}"
   end

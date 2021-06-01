@@ -15,9 +15,9 @@ class Host
 
   expect { raise 'boom' }.to raise_error('boom')
 
-  expect {
+  expect do
     'hello'.world
-  }.to raise_error(an_object_having_attributes(name: :world))
+  end.to raise_error(an_object_having_attributes(name: :world))
 
   expect { 'hello'.world }.to raise_error(NoMethodError) do |ex|
     expect(ex.name).to eq(:world)
@@ -32,9 +32,9 @@ class Host
   end
 
   user = { name: 'Violet' }
-  expect {
+  expect do
     age_of(user)
-  }.to raise_error(
+  end.to raise_error(
     an_object_having_attributes(cause: an_instance_of(KeyError))
   )
 
@@ -42,9 +42,9 @@ class Host
     expect(ex.cause).to be_a(KeyError)
   end
 
-  expect {
+  expect do
     expect { age__of(user) }.not_to raise_error(MissingDataError)
-  }.to output(/risks false positives/).to_stderr
+  end.to output(/risks false positives/).to_stderr
 
   expect { throw :found }.to throw_symbol(:found)
 
@@ -64,15 +64,15 @@ class Host
     yield(*args)
   end
 
-  expect { |block|
+  expect do |block|
     just_yield_these(10, 'food', Math::PI, &block)
-  }.to yield_with_args(10, /foo/, a_value_within(0.1).of(3.14))
+  end.to yield_with_args(10, /foo/, a_value_within(0.1).of(3.14))
 
   expect { |block| just_yield_these(&block) }.to yield_with_no_args
 
-  expect { |block|
-    ['football', 'barstool'].each_with_index(&block)
-  }.to yield_successive_args(
+  expect do |block|
+    %w[football barstool].each_with_index(&block)
+  end.to yield_successive_args(
     [/foo/,                         0],
     [a_string_starting_with('bar'), 1]
   )
@@ -83,12 +83,12 @@ class Host
   expect { array << 4 }.to change(array, :size)
 
   # Validate what the text says about the failure message...
-  expect {
-    expect { }.to change { array.size }
-  }.to fail(a_string_starting_with('expected `array.size` to have changed'))
-  expect {
-    expect { }.to change(array, :size)
-  }.to fail(a_string_starting_with('expected #size to have changed'))
+  expect do
+    expect {}.to change { array.size }
+  end.to fail(a_string_starting_with('expected `array.size` to have changed'))
+  expect do
+    expect {}.to change(array, :size)
+  end.to fail(a_string_starting_with('expected #size to have changed'))
 
   expect { array.concat([1, 2, 3]) }.to change { array.size }.by(3)
   expect { array.concat([1, 2, 3]) }.to change { array.size }.by_at_least(2)
@@ -109,7 +109,7 @@ class Host
   expect { x += 1 }.to change { x }.from(a_value_between(2, 7))
 
   x = 5
-  expect { }.not_to change { x }.from(5)
+  expect {}.not_to change { x }.from(5)
 
   expect { print 'OK' }.to output('OK').to_stdout
   expect { warn 'problem' }.to output(/prob/).to_stderr

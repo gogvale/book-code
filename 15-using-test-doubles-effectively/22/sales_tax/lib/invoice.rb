@@ -13,7 +13,7 @@ class Invoice
     subtotal + taxes
   end
 
-private
+  private
 
   def tax_rate
     @tax_client.rates_for_location(@address.zip).combined_rate

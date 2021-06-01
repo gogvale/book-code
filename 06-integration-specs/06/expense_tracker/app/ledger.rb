@@ -8,7 +8,6 @@ module ExpenseTracker
       RecordResult.new(true, id, nil)
     end
 
-    def expenses_on(date)
-    end
+    def expenses_on(date); end
   end
 end

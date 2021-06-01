@@ -33,8 +33,7 @@ class Host
   class ImmediateFailureFormatter
     RSpec::Core::Formatters.register self, :example_failed
 
-    def initialize(_)
-    end
+    def initialize(_); end
 
     def example_failed(notification)
       raise notification.exception
@@ -136,11 +135,11 @@ class Host
 
   expect(['a string', Regexp]).to include(String)
 
-  expect([String, Regexp]).to include(an_object_eq_to String)
+  expect([String, Regexp]).to include(an_object_eq_to(String))
 
-  expect {
-    expect(['a string', Regexp]).to include(an_object_eq_to String)
-  }.to fail
+  expect do
+    expect(['a string', Regexp]).to include(an_object_eq_to(String))
+  end.to fail
 
   expect(1).to be == 1
   expect(1).to be < 2
@@ -153,9 +152,9 @@ class Host
   squares = 1.upto(4).map { |i| i * i }
   expect(squares).to include(a_value > 15)
 
-  expect {
+  expect do
     expect(0.1 + 0.2).to eq(0.3)
-  }.to fail(a_string_including heredoc_without_markers(<<-EOM))
+  end.to fail(a_string_including(heredoc_without_markers(<<-EOM)))
   expected: 0.3
        got: 0.30000000000000004
 
@@ -181,20 +180,20 @@ class Host
 
   expect(user.admin?).to eq(true)
 
-  expect {
+  expect do
     user = User.new(false)
     expect(user.admin?).to eq(true)
-  }.to fail(a_string_including heredoc_without_markers(<<-EOM))
+  end.to fail(a_string_including(heredoc_without_markers(<<-EOM)))
   expected: true
        got: false
 
   (compared using ==)
   EOM
 
-  expect {
+  expect do
     user = User.new(false)
     expect(user).to be_an_admin
-  }.to fail(a_string_including heredoc_without_markers(<<-EOM))
+  end.to fail(a_string_including(heredoc_without_markers(<<-EOM)))
   expected `#<User name="Daphne">.admin?` to return true, got false
   EOM
 
@@ -203,11 +202,11 @@ class Host
 
   # Our choice not to use Symbol#to_proc is intentional
   # here for didactic reasons.
-  expect(1).to satisfy { |number| number.odd? }
+  expect(1).to satisfy(&:odd?)
 
-  expect {
-    expect(2).to satisfy { |number| number.odd? }
-  }.to fail(a_string_including heredoc_without_markers(<<-EOM))
+  expect do
+    expect(2).to satisfy(&:odd?)
+  end.to fail(a_string_including(heredoc_without_markers(<<-EOM)))
   expected 2 to satisfy expression `number.odd?`
   EOM
 

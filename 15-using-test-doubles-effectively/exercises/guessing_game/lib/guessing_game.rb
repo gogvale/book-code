@@ -5,6 +5,7 @@ class GuessingGame
 
     5.downto(1) do |remaining_guesses|
       break if @guess == @number
+
       puts "Pick a number 1-100 (#{remaining_guesses} guesses left):"
       @guess = gets.to_i
       check_guess
@@ -13,7 +14,7 @@ class GuessingGame
     announce_result
   end
 
-private
+  private
 
   def check_guess
     if @guess > @number

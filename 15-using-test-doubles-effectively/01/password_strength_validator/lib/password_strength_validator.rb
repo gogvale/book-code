@@ -1,7 +1,6 @@
 require 'configuration'
 
 class PasswordStrengthValidator
-
   attr_reader :password
 
   def initialize(password)

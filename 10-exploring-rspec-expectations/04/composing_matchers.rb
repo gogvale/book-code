@@ -5,7 +5,7 @@ include RSpec::Matchers
 presidents = [
   { name: 'George Washington', birth_year: 1732 },
   { name: 'John Adams',        birth_year: 1735 },
-  { name: 'Thomas Jefferson',  birth_year: 1743 },
+  { name: 'Thomas Jefferson',  birth_year: 1743 }
   # ...
 ]
 expect(presidents).to start_with(
@@ -16,13 +16,13 @@ expect(presidents).to start_with(
 alphabet = ('a'..'z').to_a
 expect(alphabet).to start_with('a').and end_with('z')
 
-stoplight_color = %w[ green red yellow ].sample
+stoplight_color = %w[green red yellow].sample
 expect(stoplight_color).to eq('green').or eq('red').or eq('yellow')
 
 alphabet = ('a'..'z').to_a
 expect(alphabet).to start_with('a') & end_with('z')
 
-stoplight_color = %w[ green red yellow ].sample
+stoplight_color = %w[green red yellow].sample
 expect(stoplight_color).to eq('green') | eq('red') | eq('yellow')
 
 letter_ranges = ['N to Z', 'A to M']

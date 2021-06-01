@@ -1,6 +1,6 @@
 class Water
   def self.elements
-    [:oxygen, :hydrogen]
+    %i[oxygen hydrogen]
   end
 end
 

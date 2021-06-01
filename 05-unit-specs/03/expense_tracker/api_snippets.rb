@@ -1,6 +1,6 @@
 # Load the spec so we get access to `RecordResult` struct.
 require 'rspec/core'
-require_relative 'spec/unit/app/api_spec.rb'
+require_relative 'spec/unit/app/api_spec'
 require 'sinatra/base'
 
 class Ledger

@@ -10,8 +10,7 @@ class Dinosaur
 end
 
 class Rocket
-  def launch!
-  end
+  def launch!; end
 end
 
 require 'minitest/autorun'

@@ -7,9 +7,9 @@ module ExpenseTracker
     let(:ledger) { Ledger.new }
     let(:expense) do
       {
-        'payee'  => 'Starbucks',
+        'payee' => 'Starbucks',
         'amount' => 5.75,
-        'date'   => '2017-06-10'
+        'date' => '2017-06-10'
       }
     end
 
@@ -29,7 +29,6 @@ module ExpenseTracker
           )]
         end
       end
-
     end
   end
 end

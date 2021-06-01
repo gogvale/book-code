@@ -17,5 +17,4 @@ RSpec.describe MyApp::Configuration do
   it 'isolates mutations from other examples' do
     expect(ENV['FOO']).to eq nil
   end
-
 end

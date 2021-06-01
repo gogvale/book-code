@@ -3,6 +3,7 @@ require 'endpoint'
 
 class APIRequestTracker
   attr_writer :reporter
+
   def reporter
     @reporter ||= MetricsReporter.new
   end

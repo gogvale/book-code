@@ -5,7 +5,6 @@ expect(a).not_to matcher
 expect(a).to_not matcher
 
 expect { some_code }.to matcher
-#
 expect { do_something }.to change(obj, :attr)
 # or
 expect { do_something }.to change { obj.attr }

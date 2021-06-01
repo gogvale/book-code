@@ -1,6 +1,7 @@
 class S3Client
   def self.for(type)
-    return if type == :real || type == :memory
+    return if %i[real memory].include?(type)
+
     raise "Invalid: #{type.inspect}"
   end
 end

@@ -17,9 +17,7 @@ describe SwissArmyKnife do  # bare `describe` method
   end
 end
 
-RSpec.configure do |config|
-  config.disable_monkey_patching!
-end
+RSpec.configure(&:disable_monkey_patching!)
 
 # New syntax
 
